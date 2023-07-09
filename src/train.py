@@ -35,6 +35,7 @@ import lightning.pytorch as L
 import hydra
 from omegaconf import DictConfig
 from lightning.pytorch.loggers.mlflow import MLFlowLogger
+from lightning.pytorch.callbacks import LearningRateFinder
 import torch
 from src import utils
 import os
@@ -58,6 +59,10 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
 
     log.info("Instantiating callbacks...")
     callbacks: List[Callback] = utils.instantiate_callbacks(cfg.get("callbacks"))
+
+    # Disable Learning Rate finder callbacks for trainer, in case of tuner is enabled.
+    if cfg.get("tuner"): 
+        callbacks = [callback_ for callback_ in callbacks if not isinstance(callback_, LearningRateFinder)]
 
     log.info(f"Instantiating trainer <{cfg.trainer._target_}>")
     trainer: Trainer = hydra.utils.instantiate(cfg.trainer, callbacks=callbacks, logger=logger)
