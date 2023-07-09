@@ -198,6 +198,8 @@ model.block_size=8 model.net.block_size=8 model.net.n_embed=192 model.net.n_head
 ##### Scatter plot of different HyperParameters across Experiments in MLflow
 <div align="left">
 
+![image](https://github.com/RSWAINGL/pl-hy-dev/assets/139045266/29c6a49b-a7cc-45cc-b4a0-bbe7a2538220)
+
 
 </div>
 
