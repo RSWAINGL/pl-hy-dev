@@ -29,7 +29,7 @@ root = pyrootutils.setup_root(
 #
 # https://github.com/ashleve/pyrootutils
 # ------------------------------------------------------------------------------------ #
-from typing import Tuple, Dict
+from typing import Tuple, Dict, List
 import mlflow
 import lightning.pytorch as L
 import hydra
