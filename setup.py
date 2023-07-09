@@ -8,7 +8,7 @@ setup(
     description="PyTorch Lightning Project Setup using Hydra with TIMM template.",
     author="",
     author_email="",
-    url="https://github.com/RSWAIN1486/emlov3-pytorchlightning-hydra",
+    url="https://github.com/RSWAINGL/pl-hy-dev",
     install_requires=["lightning", "hydra-core"],
     packages=find_packages(),
     # use this to customize global commands available in the terminal after installing the package
