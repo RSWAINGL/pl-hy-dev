@@ -48,6 +48,11 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
     if cfg.get("seed"):
         L.seed_everything(cfg.seed, workers=True)
 
+    # Override block_size for GPT training while Optuna Hyperparam Optimization
+    if bool(cfg['datamodule'].get('block_size', {})):
+        cfg.model.block_size     = cfg.datamodule.block_size
+        cfg.model.net.block_size = cfg.datamodule.block_size
+    
     log.info(f"Instantiating datamodule <{cfg.datamodule._target_}>")
     datamodule: LightningDataModule = hydra.utils.instantiate(cfg.datamodule)
 
